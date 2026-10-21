@@ -25,8 +25,8 @@
         <div id="auth-message" class="notice" role="status" hidden></div>
         <form id="auth-form">
           <label for="email">E-Mail-Adresse</label><input id="email" name="email" type="email" autocomplete="username" placeholder="name@beispiel.de" required maxlength="254">
-          <label for="password">Passwort</label><input id="password" name="password" type="password" autocomplete="current-password" required minlength="12" maxlength="128" placeholder="Dein Passwort">
-          <p id="password-hint" class="field-hint" hidden>12–128 Zeichen. Verwende ein einzigartiges Passwort.</p>
+          <label for="password">Passwort</label><input id="password" name="password" type="password" autocomplete="current-password" required maxlength="128" aria-describedby="password-hint" placeholder="Dein Passwort">
+          <p id="password-hint" class="field-hint">12–128 Byte (UTF-8). Umlaute und Emojis benötigen mehrere Byte. Verwende ein einzigartiges Passwort.</p>
           <p id="registration-hint" class="notice" hidden>Neue Konten sind zunächst inaktiv (active = 0). Ein Administrator muss dein Konto freischalten, bevor du dich anmelden kannst.</p>
           <button id="auth-submit" class="button primary full" type="submit">Anmelden <span aria-hidden="true">→</span></button>
         </form>

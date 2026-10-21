@@ -92,6 +92,7 @@
     $('app-view').hidden = true;
     $('boot').hidden = true;
     $('password').value = '';
+    $('password').setCustomValidity('');
     for (const id of ['tool-grid', 'provider-grid', 'category-nav', 'subcategory-nav', 'query-fields', 'history-list']) $(id).replaceChildren();
     $('result-output').textContent = '';
     $('query-section').hidden = true;
@@ -106,8 +107,7 @@
     $('auth-description').textContent = register ? 'Erstelle dein Konto für strukturierte Open-Source-Recherche.' : 'Melde dich an, um deinen geschützten Arbeitsbereich zu öffnen.';
     $('auth-submit').textContent = register ? 'Konto erstellen →' : 'Anmelden →';
     $('password').autocomplete = register ? 'new-password' : 'current-password';
-    $('password').minLength = 12;
-    $('password-hint').hidden = !register;
+    $('password-hint').hidden = false;
     $('registration-hint').hidden = !register;
     for (const [id, active] of [['login-tab', !register], ['register-tab', register]]) {
       $(id).classList.toggle('selected', active);
@@ -409,11 +409,23 @@
       }
     }
   }
+  function validatePassword() {
+    const input = $('password');
+    const bytes = new TextEncoder().encode(input.value).length;
+    const valid = bytes >= 12 && bytes <= 128;
+    input.setCustomValidity(valid || !input.value ? '' : 'Das Passwort muss 12–128 Byte (UTF-8) lang sein. Umlaute und Emojis benötigen mehrere Byte.');
+    return valid;
+  }
+  $('password').addEventListener('input', validatePassword);
   $('login-tab').addEventListener('click', () => { if (!state.authBusy) setAuthMode('login'); });
   $('register-tab').addEventListener('click', () => { if (!state.authBusy) setAuthMode('register'); });
   $('auth-form').addEventListener('submit', async (event) => {
     event.preventDefault();
     if (state.authBusy) return;
+    if (!validatePassword()) {
+      $('password').reportValidity();
+      return;
+    }
     state.authBusy = true;
     const mode = state.authMode;
     $('auth-submit').disabled = true;
@@ -423,6 +435,7 @@
       if (!state.csrf) { const session = await request('session'); state.csrf = session.csrf; }
       const data = await request(mode, { body: { email: $('email').value.trim(), password: $('password').value } });
       $('password').value = '';
+      $('password').setCustomValidity('');
       if (mode === 'register') {
         setAuthMode('login');
         message('auth-message', `${data.message || 'Dein Konto wurde erstellt.'} Dein Konto ist zunächst inaktiv (active = 0). Bitte warte auf die Freischaltung durch einen Administrator.`, 'success');
