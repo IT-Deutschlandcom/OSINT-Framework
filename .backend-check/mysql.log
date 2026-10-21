@@ -1,0 +1,11 @@
+2026-10-21T12:23:43.708509Z 0 [System] [MY-013169] [Server] /home/runner/work/OSINT-Framework/OSINT-Framework/.backend-check/mysqld (mysqld 8.0.46-0ubuntu0.24.04.4) initializing of server in progress as process 6311
+2026-10-21T12:23:43.708531Z 0 [ERROR] [MY-010338] [Server] Can't find error-message file '/home/runner/work/OSINT-Framework/OSINT-Framework/share/mysql/errmsg.sys'. Check error-message file location and 'lc-messages-dir' configuration directive.
+2026-10-21T12:23:43.713758Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2026-10-21T12:23:44.157892Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2026-10-21T12:23:45.432470Z 5 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+2026-10-21T12:23:47.261283Z 0 [System] [MY-010116] [Server] /home/runner/work/OSINT-Framework/OSINT-Framework/.backend-check/mysqld (mysqld 8.0.46-0ubuntu0.24.04.4) starting as process 6308
+2026-10-21T12:23:47.266101Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2026-10-21T12:23:47.420404Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2026-10-21T12:23:47.544907Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2026-10-21T12:23:47.544955Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2026-10-21T12:23:47.559053Z 0 [System] [MY-010931] [Server] /home/runner/work/OSINT-Framework/OSINT-Framework/.backend-check/mysqld: ready for connections. Version: '8.0.46-0ubuntu0.24.04.4'  socket: '/home/runner/work/OSINT-Framework/OSINT-Framework/.backend-check/m.sock'  port: 3306  (Ubuntu).
