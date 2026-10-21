@@ -12,6 +12,9 @@ bower_components
 # generated artifacts #
 ######################
 tools/link_audit_report.json
+.backend-check/
+.dashboard-browser-profile/
+.dashboard-chromedriver.log
 
 # OS generated files #
 ######################

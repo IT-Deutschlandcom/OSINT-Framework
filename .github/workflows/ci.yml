@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check index.html local asset references exist
+      - name: Check PHP dashboard deployment files exist
         run: |
           check_asset() {
             local path="public/$1"
@@ -38,9 +38,12 @@ jobs:
               echo "OK: $path"
             fi
           }
-          check_asset "css/arf.css"
-          check_asset "js/d3.min.js"
-          check_asset "js/arf.js"
+          check_asset "index.php"
+          check_asset "api.php"
+          check_asset "config.php"
+          check_asset "web.config"
+          check_asset "css/dashboard.css"
+          check_asset "js/dashboard.js"
           check_asset "arf.json"
 
   link-check:
